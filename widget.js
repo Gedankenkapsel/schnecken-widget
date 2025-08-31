@@ -33,6 +33,6 @@ setInterval(() => {
   if (testMode) {
     simulateLikes();
   } else {
-    // fetchLikes(); // Hier kannst du später deine echte Like-Quelle einbauen
+    // Hier kannst du später echte Likes abrufen
   }
 }, 1000);

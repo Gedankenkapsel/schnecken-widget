@@ -25,7 +25,7 @@ function updateSchnecke(likes) {
 }
 
 function simulateLikes() {
-  let fakeLikes = previousLikes + Math.floor(Math.random() * 300 + 100);
+  let fakeLikes = previousLikes + Math.floor(Math.random() * 700 + 400);
   updateSchnecke(fakeLikes);
 }
 
@@ -34,5 +34,6 @@ setInterval(() => {
     simulateLikes();
   }
 }, 1000);
+
 
 

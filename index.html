@@ -51,15 +51,16 @@
     /* Fortschrittsbalken-Styling */
     #progressWrapper {
       position: absolute;
-      bottom: 20px;
+      bottom: 100px;
       left: 50%;
       transform: translateX(-50%);
-      width: 800px;
-      height: 40px;
+      width: 1000px;
+      height: 60px;
       background-color: #333;
-      border-radius: 20px;
+      border-radius: 30px;
       overflow: hidden;
       z-index: 3;
+      box-shadow: 0 0 15px rgba(0, 255, 0, 0.4); /* optionaler Glow-Effekt */
     }
 
     #progressBar {
@@ -75,8 +76,8 @@
       left: 50%;
       transform: translateX(-50%);
       height: 100%;
-      line-height: 40px;
-      font-size: 22px;
+      line-height: 60px;
+      font-size: 28px;
       color: white;
       font-weight: bold;
       z-index: 4;
@@ -99,3 +100,4 @@
   <script src="widget.js"></script>
 </body>
 </html>
+

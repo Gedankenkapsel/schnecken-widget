@@ -11,7 +11,7 @@ const schneckeBreite = 250;
 const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 
-const testMode = true;
+const testMode = false;
 
 function updateSchnecke(likes) {
   // Schnecke bewegen
@@ -44,3 +44,4 @@ setInterval(() => {
     simulateLikes();
   }
 }, 1000);
+

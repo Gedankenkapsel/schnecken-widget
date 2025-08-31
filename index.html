@@ -35,17 +35,18 @@
       transition: left 0.5s ease-out;
     }
 
-    #likeInfo {
-      position: absolute;
-      top: 30px;
-      left: 30px;
-      font-size: 50px;
-      color: white;
-      background: rgba(0,0,0,0.7);
-      padding: 40px 60px;
-      border-radius: 14px;
-      z-index: 3;
-    }
+ #likeInfo {
+  position: absolute;
+  bottom: 40px; /* Abstand vom unteren Rand */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px 60px;
+  border-radius: 14px;
+  z-index: 3;
+}
   </style>
 </head>
 <body>
@@ -58,4 +59,5 @@
   <script src="widget.js"></script>
 </body>
 </html>
+
 

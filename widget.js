@@ -4,8 +4,10 @@ let likeInfo = document.getElementById("likeInfo");
 let position = 0;
 let previousLikes = 0;
 const likeZiel = 150000;
-const rasenBreite = 1500 - 120; // Rasenbreite minus Schneckengröße
-const pixelProLike = rasenBreite / likeZiel;
+const containerBreite = 1500;
+const schneckeBreite = 200;
+const maxPosition = containerBreite - schneckeBreite;
+const pixelProLike = maxPosition / likeZiel;
 
 const testMode = true; // ⬅️ true = Testmodus, false = Livemodus
 
@@ -13,7 +15,7 @@ function updateSchnecke(likes) {
   if (likes > previousLikes) {
     let neueLikes = likes - previousLikes;
     position += neueLikes * pixelProLike;
-    if (position > rasenBreite) position = rasenBreite;
+    if (position > maxPosition) position = maxPosition;
 
     schnecke.style.left = position + "px";
   }

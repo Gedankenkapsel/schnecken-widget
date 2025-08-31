@@ -35,18 +35,52 @@
       transition: left 0.5s ease-out;
     }
 
- #likeInfo {
-  position: absolute;
-  bottom: 80px; /* Abstand vom unteren Rand */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 50px;
-  color: white;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 40px 60px;
-  border-radius: 14px;
-  z-index: 3;
-}
+    #likeInfo {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 50px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 40px 60px;
+      border-radius: 14px;
+      z-index: 3;
+    }
+
+    /* Fortschrittsbalken-Styling */
+    #progressWrapper {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 40px;
+      background-color: #333;
+      border-radius: 20px;
+      overflow: hidden;
+      z-index: 3;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background-color: #4CAF50;
+      transition: width 0.5s ease-out;
+    }
+
+    #progressText {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
+      line-height: 40px;
+      font-size: 22px;
+      color: white;
+      font-weight: bold;
+      z-index: 4;
+    }
   </style>
 </head>
 <body>
@@ -54,12 +88,14 @@
     <img id="rasen" src="rasen.png" alt="Rasen">
     <img id="schnecke" src="schnecke.png" alt="Schnecke">
     <div id="likeInfo">Likes: 0 / 150000</div>
+
+    <!-- Fortschrittsbalken -->
+    <div id="progressWrapper">
+      <div id="progressBar"></div>
+      <div id="progressText">0%</div>
+    </div>
   </div>
 
   <script src="widget.js"></script>
 </body>
 </html>
-
-
-
-

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Schnecken-Like-Widget</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: url('rasen.png') no-repeat center center;
+      background-size: cover;
+      font-family: sans-serif;
+      color: white;
+      text-shadow: 1px 1px 2px black;
+    }
+
+    #schnecke {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      transition: left 0.5s ease;
+    }
+
+    #likeInfo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="likeInfo">Likes: 0 / 500</div>
+  <img id="schnecke" src="schnecke.png" width="100" />
+  <script src="widget.js"></script>
+</body>
+</html>

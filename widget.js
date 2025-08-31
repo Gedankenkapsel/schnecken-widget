@@ -32,7 +32,5 @@ function simulateLikes() {
 setInterval(() => {
   if (testMode) {
     simulateLikes();
-  } else {
-    // Hier kannst du später echte Likes abrufen
   }
 }, 1000);

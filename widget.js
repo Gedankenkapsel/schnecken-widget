@@ -4,12 +4,12 @@ let likeInfo = document.getElementById("likeInfo");
 let position = 0;
 let previousLikes = 0;
 const likeZiel = 150000;
-const containerBreite = 1500;
-const schneckeBreite = 200;
+const containerBreite = 1920;
+const schneckeBreite = 250;
 const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 
-const testMode = true; // ⬅️ true = Testmodus, false = Livemodus
+const testMode = true;
 
 function updateSchnecke(likes) {
   if (likes > previousLikes) {
@@ -24,19 +24,8 @@ function updateSchnecke(likes) {
   previousLikes = likes;
 }
 
-async function fetchLikes() {
-  try {
-    const response = await fetch("ws://localhost:21213/");
-    const data = await response.json();
-    const aktuelleLikes = data.likes;
-    updateSchnecke(aktuelleLikes);
-  } catch (error) {
-    console.error("Fehler beim Abrufen der Likes:", error);
-  }
-}
-
 function simulateLikes() {
-  let fakeLikes = previousLikes + Math.floor(Math.random() * 50 + 10);
+  let fakeLikes = previousLikes + Math.floor(Math.random() * 50 + 20);
   updateSchnecke(fakeLikes);
 }
 
@@ -44,6 +33,6 @@ setInterval(() => {
   if (testMode) {
     simulateLikes();
   } else {
-    fetchLikes();
+    // fetchLikes(); // Hier kannst du später deine echte Like-Quelle einbauen
   }
 }, 1000);

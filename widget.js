@@ -1,5 +1,7 @@
 let schnecke = document.getElementById("schnecke");
 let likeInfo = document.getElementById("likeInfo");
+let progressBar = document.getElementById("progressBar");
+let progressText = document.getElementById("progressText");
 
 let position = 0;
 let previousLikes = 0;
@@ -12,6 +14,7 @@ const pixelProLike = maxPosition / likeZiel;
 const testMode = true;
 
 function updateSchnecke(likes) {
+  // Schnecke bewegen
   if (likes > previousLikes) {
     let neueLikes = likes - previousLikes;
     position += neueLikes * pixelProLike;
@@ -20,7 +23,14 @@ function updateSchnecke(likes) {
     schnecke.style.left = position + "px";
   }
 
+  // Like-Zähler aktualisieren
   likeInfo.textContent = `Likes: ${likes} / ${likeZiel}`;
+
+  // Fortschrittsbalken aktualisieren
+  let prozent = Math.min((likes / likeZiel) * 100, 100).toFixed(1);
+  progressBar.style.width = `${prozent}%`;
+  progressText.textContent = `${prozent}%`;
+
   previousLikes = likes;
 }
 
@@ -34,6 +44,3 @@ setInterval(() => {
     simulateLikes();
   }
 }, 1000);
-
-
-

@@ -3,14 +3,18 @@ let likeInfo = document.getElementById("likeInfo");
 
 let position = 0;
 let previousLikes = 0;
-const likeZiel = 150000; // Dein Ziel
+const likeZiel = 150000;
+const rasenBreite = 1500 - 120; // Rasenbreite minus Schneckengröße
+const pixelProLike = rasenBreite / likeZiel;
 
-const testMode = true; // ⬅️ Ändere auf false für echten Livemodus
+const testMode = true; // ⬅️ true = Testmodus, false = Livemodus
 
 function updateSchnecke(likes) {
   if (likes > previousLikes) {
     let neueLikes = likes - previousLikes;
-    position += neueLikes * 5; // z. B. 5px pro Like
+    position += neueLikes * pixelProLike;
+    if (position > rasenBreite) position = rasenBreite;
+
     schnecke.style.left = position + "px";
   }
 
@@ -20,7 +24,7 @@ function updateSchnecke(likes) {
 
 async function fetchLikes() {
   try {
-    const response = await fetch("ws://localhost:21213/"); // Tikfinity-API
+    const response = await fetch("ws://localhost:21213/");
     const data = await response.json();
     const aktuelleLikes = data.likes;
     updateSchnecke(aktuelleLikes);
@@ -30,15 +34,14 @@ async function fetchLikes() {
 }
 
 function simulateLikes() {
-  let fakeLikes = previousLikes + Math.floor(Math.random() * 50 + 10); // 10–60 Likes pro Tick
+  let fakeLikes = previousLikes + Math.floor(Math.random() * 50 + 10);
   updateSchnecke(fakeLikes);
 }
 
-// Alle 0.5 Sekunden aktualisieren
 setInterval(() => {
   if (testMode) {
     simulateLikes();
   } else {
     fetchLikes();
   }
-}, 500);
+}, 1000);

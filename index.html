@@ -2,39 +2,46 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Schnecken-Like-Widget</title>
+  <title>Schneckenrennen</title>
   <style>
     body {
       margin: 0;
       overflow: hidden;
-      background: url('rasen.png') no-repeat center center;
+    }
+
+    #rasen {
+      position: relative;
+      width: 1500px; /* Breite des Rasens */
+      height: 300px;
+      background-image: url('rasen.png'); /* Dein Rasenbild */
       background-size: cover;
-      font-family: sans-serif;
-      color: white;
-      text-shadow: 1px 1px 2px black;
+      background-position: center;
+      border: 2px solid #333;
     }
 
     #schnecke {
       position: absolute;
-      bottom: 20px;
-      left: 0;
-      transition: left 0.5s ease;
+      top: 200px; /* Höhe auf dem Rasen */
+      left: 0px;
+      width: 120px; /* Größe der Schnecke */
+      height: auto;
+      transition: left 0.3s ease-out;
     }
 
     #likeInfo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 24px;
-      background: rgba(0,0,0,0.5);
-      padding: 10px;
-      border-radius: 8px;
+      margin-top: 20px;
+      font-family: sans-serif;
+      font-size: 20px;
+      color: #333;
     }
   </style>
 </head>
 <body>
+  <div id="rasen">
+    <img id="schnecke" src="schnecke.png" alt="Schnecke">
+  </div>
   <div id="likeInfo">Likes: 0 / 150000</div>
-  <img id="schnecke" src="schnecke.png" width="100" />
+
   <script src="widget.js"></script>
 </body>
 </html>

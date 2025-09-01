@@ -12,7 +12,7 @@ const schneckeBreite = 250;
 const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 
-const testMode = true;
+const testMode = false;
 let zielErreicht = false; // Flag, damit Fade-Out nur einmal passiert
 
 function updateSchnecke(likes) {
@@ -79,3 +79,4 @@ socket.onmessage = (event) => {
 socket.onerror = (error) => {
   console.error("❌ WebSocket-Fehler:", error);
 };
+

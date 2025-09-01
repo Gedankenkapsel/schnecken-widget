@@ -2,6 +2,7 @@ let schnecke = document.getElementById("schnecke");
 let likeInfo = document.getElementById("likeInfo");
 let progressBar = document.getElementById("progressBar");
 let progressText = document.getElementById("progressText");
+let container = document.getElementById("container"); // hinzugefügt
 
 let position = 0;
 let previousLikes = 0;
@@ -12,8 +13,8 @@ const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 
 const testMode = true;
+let zielErreicht = false; // Flag, damit Fade-Out nur einmal passiert
 
-// Funktion zum Aktualisieren der Schnecke
 function updateSchnecke(likes) {
   if (likes > previousLikes) {
     let neueLikes = likes - previousLikes;
@@ -30,6 +31,17 @@ function updateSchnecke(likes) {
   progressText.textContent = `${prozent}%`;
 
   previousLikes = likes;
+
+  // Fade-Out bei Zielerreichung
+  if (likes >= likeZiel && !zielErreicht) {
+    zielErreicht = true;
+    container.classList.add("fade-out");
+
+    setTimeout(() => {
+      container.style.display = "none";
+      document.body.style.backgroundColor = "black";
+    }, 2000); // Dauer des Fade-Outs
+  }
 }
 
 // Testmodus: Likes simulieren
@@ -56,7 +68,6 @@ socket.onmessage = (event) => {
     const message = JSON.parse(event.data);
 
     if (message.event === "like") {
-      // Achtung: Struktur kann je nach TikFinity-Version variieren
       const likes = message.data.totalLikeCount || message.data.likeCount || 0;
       updateSchnecke(likes);
     }
@@ -68,4 +79,3 @@ socket.onmessage = (event) => {
 socket.onerror = (error) => {
   console.error("❌ WebSocket-Fehler:", error);
 };
-

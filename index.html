@@ -16,6 +16,7 @@
       overflow: hidden;
     }
 
+    /* RASEN ALS VIDEO */
     #rasen {
       position: absolute;
       bottom: 0;
@@ -23,16 +24,19 @@
       width: 100%;
       height: auto;
       z-index: 1;
+      pointer-events: none;
     }
 
+    /* SCHNECKE ALS VIDEO */
     #schnecke {
       position: absolute;
-      bottom: 80px;
+      bottom: 40px;
       left: 0;
       width: 1250px;
       height: auto;
       z-index: 2;
       transition: left 0.5s ease-out;
+      pointer-events: none;
     }
 
     #likeInfo {
@@ -47,12 +51,8 @@
       border-radius: 14px;
       z-index: 3;
     }
-    .fade-out {
-  opacity: 0;
-  transition: opacity 2s ease-out;
-}
 
-    /* Fortschrittsbalken-Styling */
+    /* Fortschrittsbalken */
     #progressWrapper {
       position: absolute;
       bottom: 170px;
@@ -89,8 +89,17 @@
 </head>
 <body>
   <div id="container">
-    <img id="rasen" src="rasen.png" alt="Rasen">
-    <img id="schnecke" src="schnecke.png" alt="Schnecke">
+
+    <!-- RASEN ALS VIDEO -->
+    <video id="rasen" autoplay loop muted playsinline>
+      <source src="rasen.mp4" type="video/mp4">
+    </video>
+
+    <!-- SCHNECKE ALS VIDEO -->
+    <video id="schnecke" autoplay loop muted playsinline>
+      <source src="paul.mp4" type="video/mp4">
+    </video>
+
     <div id="likeInfo">Likes: 0 / 150000</div>
 
     <!-- Fortschrittsbalken -->
@@ -98,15 +107,9 @@
       <div id="progressBar"></div>
       <div id="progressText">0%</div>
     </div>
+
   </div>
 
   <script src="widget.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

@@ -2,19 +2,18 @@ let schnecke = document.getElementById("schnecke");
 let likeInfo = document.getElementById("likeInfo");
 let progressBar = document.getElementById("progressBar");
 let progressText = document.getElementById("progressText");
-let container = document.getElementById("container"); // hinzugefügt
 
 let position = 0;
 let previousLikes = 0;
 const likeZiel = 150000;
 const containerBreite = 1920;
-const schneckeBreite = 250;
+const schneckeBreite = 750;
 const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 
-const testMode = false;
-let zielErreicht = false; // Flag, damit Fade-Out nur einmal passiert
+const testMode = true;
 
+// Funktion zum Aktualisieren der Schnecke
 function updateSchnecke(likes) {
   if (likes > previousLikes) {
     let neueLikes = likes - previousLikes;
@@ -31,17 +30,6 @@ function updateSchnecke(likes) {
   progressText.textContent = `${prozent}%`;
 
   previousLikes = likes;
-
-  // Fade-Out bei Zielerreichung
-  if (likes >= likeZiel && !zielErreicht) {
-    zielErreicht = true;
-    container.classList.add("fade-out");
-
-    setTimeout(() => {
-      container.style.display = "none";
-      document.body.style.backgroundColor = "black";
-    }, 2000); // Dauer des Fade-Outs
-  }
 }
 
 // Testmodus: Likes simulieren
@@ -79,4 +67,3 @@ socket.onmessage = (event) => {
 socket.onerror = (error) => {
   console.error("❌ WebSocket-Fehler:", error);
 };
-

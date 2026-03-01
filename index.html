@@ -16,10 +16,21 @@
       overflow: hidden;
     }
 
+    /* RASEN ALS VIDEO */
+    #rasen {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      z-index: 4;
+      pointer-events: none;
+    }
+
     /* SCHNECKE ALS VIDEO */
     #schnecke {
       position: absolute;
-      bottom: 1250px;
+      bottom: 40px;
       left: 0;
       width: 1250px;
       height: auto;
@@ -28,20 +39,9 @@
       pointer-events: none;
     }
 
-/* RASEN ALS VIDEO */
-    #rasen {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: auto;
-      z-index: 5;
-      pointer-events: none;
-    }
-    
     #likeInfo {
       position: absolute;
-      bottom: -900px;
+      bottom: 70px;
       left: 50%;
       transform: translateX(-50%);
       font-size: 50px;
@@ -55,7 +55,7 @@
     /* Fortschrittsbalken */
     #progressWrapper {
       position: absolute;
-      bottom: -120px;
+      bottom: 170px;
       left: 50%;
       transform: translateX(-50%);
       width: 1000px;
@@ -113,10 +113,3 @@
   <script src="widget.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-

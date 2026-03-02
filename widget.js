@@ -7,7 +7,7 @@ let position = 0;
 let previousLikes = 0;
 const likeZiel = 150000;
 const containerBreite = 1920;
-const schneckeBreite = 750;
+const schneckeBreite = 560;
 const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 

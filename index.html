@@ -27,64 +27,184 @@
       pointer-events: none;
     }
 
+    /* DEKO PNG */
+    #rasen2 {
+      position: absolute;
+      bottom: 0;
+      left: 1;
+      width: 100%;
+      height: auto;
+      z-index: 4; /* über allem */
+      pointer-events: none;
+    }
+
     /* SCHNECKE ALS VIDEO */
     #schnecke {
       position: absolute;
-      bottom: 40px;
+      bottom: 60px;
       left: 0;
-      width: 1250px;
+      width: 400px;
       height: auto;
-      z-index: 5;
+      z-index: 2;
       transition: left 0.5s ease-out;
       pointer-events: none;
     }
 
-    #likeInfo {
-      position: absolute;
-      bottom: 70px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 50px;
-      color: white;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 40px 60px;
-      border-radius: 14px;
-      z-index: 6;
-    }
+#likeInfo {
+  position: absolute;
+  bottom: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 85px;
+  font-weight: 900;
+  color: #39ff14;
+  text-shadow: 
+    0 0 20px #39ff14,
+    0 0 40px #39ff14,
+    0 0 60px #39ff14;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 40px 60px;
+  border-radius: 13px;
+  z-index: 3;
+}
 
-    /* Fortschrittsbalken */
-    #progressWrapper {
-      position: absolute;
-      bottom: 170px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1000px;
-      height: 60px;
-      background-color: #333;
-      border-radius: 30px;
-      overflow: hidden;
-      z-index: 6;
-    }
+/* Fortschrittsbalken */
+#progressWrapper {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 60px;
+  background-color: #333;
+  border-radius: 30px;
+  overflow: hidden;
+  z-index: 4;
+}
 
-    #progressBar {
-      height: 100%;
-      width: 0%;
-      background-color: #4CAF50;
-      transition: width 0.5s ease-out;
-    }
+/* Wasserbewegung */
+@keyframes waterFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: -200px 0; }
+}
 
-    #progressText {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 100%;
-      line-height: 60px;
-      font-size: 60px;
-      color: white;
-      font-weight: bold;
-      z-index: 7;
-    }
+#progressBar {
+  position: relative;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    rgba(0,255,0,0.6),
+    rgba(0,180,0,0.8),
+    rgba(0,255,0,0.6)
+  );
+  background-size: 200px 100%;
+  animation: waterFlow 1.5s linear infinite;
+  transition: width 0.5s ease-out;
+  overflow: hidden;
+}
+<div id="progressBar">
+  <div class="particle" style="left:10%; animation-delay:0s;"></div>
+  <div class="particle" style="left:30%; animation-delay:0.5s;"></div>
+  <div class="particle" style="left:50%; animation-delay:1s;"></div>
+  <div class="particle" style="left:70%; animation-delay:1.5s;"></div>
+  <div class="particle" style="left:90%; animation-delay:2s;"></div>
+</div>
+
+
+/* Wellen-Overlay */
+#progressBar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: url('https://i.imgur.com/7Vb6kQp.png');
+  background-size: 50% 100%;
+  opacity: 0.35;
+  animation: waveMove 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Glanz-Effekt */
+#progressBar::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.4) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: shine 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 150%; }
+}
+
+/* Partikel (Bubbles) */
+@keyframes bubbles {
+  0% { transform: translateY(20px) scale(0.3); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-40px) scale(1); opacity: 0; }
+}
+
+.particle {
+  position: absolute;
+  bottom: 0;
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  animation: bubbles 2s infinite ease-out;
+  pointer-events: none;
+}
+
+/* Gold-Puls Effekt */
+@keyframes goldPulse {
+  0% {
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffea00, 0 0 20px #ffea00;
+  }
+  50% {
+    color: #fff4b3;
+    text-shadow: 0 0 20px #ffe066, 0 0 40px #ffea00;
+  }
+  100% {
+    color: #ffd700;
+    text-shadow: 0 0 10px #ffea00, 0 0 20px #ffea00;
+  }
+}
+
+#progressText {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  line-height: 60px;
+  font-size: 60px;
+  font-weight: bold;
+  z-index: 4;
+  animation: goldPulse 2s infinite ease-in-out;
+}
+
+
+
+    
   </style>
 </head>
 <body>
@@ -94,6 +214,9 @@
     <video id="rasen" autoplay loop muted playsinline>
       <source src="rasen.mp4" type="video/mp4">
     </video>
+
+    <!-- DEKO PNG -->
+    <img id="rasen2" src="rasen2.png">
 
     <!-- SCHNECKE ALS VIDEO -->
     <video id="schnecke" autoplay loop muted playsinline>
@@ -113,5 +236,3 @@
   <script src="widget.js"></script>
 </body>
 </html>
-
-

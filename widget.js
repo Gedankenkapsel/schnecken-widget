@@ -11,7 +11,7 @@ const schneckeBreite = 560;
 const maxPosition = containerBreite - schneckeBreite;
 const pixelProLike = maxPosition / likeZiel;
 
-const testMode = true;
+const testMode = false;
 
 // Funktion zum Aktualisieren der Schnecke
 function updateSchnecke(likes) {
@@ -67,3 +67,4 @@ socket.onmessage = (event) => {
 socket.onerror = (error) => {
   console.error("❌ WebSocket-Fehler:", error);
 };
+
